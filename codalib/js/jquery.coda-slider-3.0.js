@@ -176,12 +176,12 @@ if ( typeof Object.create !== 'function' ) {
 			var self = this;
 			$(self.sliderId).parent().addClass("arrows");
 			if(self.options.dynamicArrowsGraphical){
-				$(self.sliderId).before('<div class="coda-nav-left-arrow" data-dir="prev" title="Slide left"><a href="#"></a></div>');
-				$(self.sliderId).after('<div class="coda-nav-right-arrow" data-dir="next" title="Slide right"><a href="#"></a></div>');
+				$(self.sliderId).before('<div class="coda-nav-left-arrow" data-dir="prev" title="Slide left"><a href="#" id=Õleft-linkÕ></a></div>');
+				$(self.sliderId).after('<div class="coda-nav-right-arrow" data-dir="next" title="Slide right"><a href="#"  id=Õright-linkÕ></a></div>');
 			}
 			else{
-				$(self.sliderId).before('<div class="coda-nav-left" data-dir="prev" title="Slide left"><a href="#">' + self.options.dynamicArrowLeftText + '</a></div>');
-				$(self.sliderId).after('<div class="coda-nav-right" data-dir="next" title="Slide right"><a href="#">' + self.options.dynamicArrowRightText + '</a></div>');
+				$(self.sliderId).before('<div class="coda-nav-left" data-dir="prev" title="Slide left"><a href="#"  id=Õleft-linkÕ>' + self.options.dynamicArrowLeftText + '</a></div>');
+				$(self.sliderId).after('<div class="coda-nav-right" data-dir="next" title="Slide right"><a href="#" id=Õright-linkÕ>' + self.options.dynamicArrowRightText + '</a></div>');
 			}
 		},
 
