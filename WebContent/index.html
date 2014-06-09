@@ -68,10 +68,8 @@ h1 {
 	});
 	
 	 
-	function myFunction() {
-		//$("#coda-nav-right-1 > a").click();
-
-		$("#right-link").click();
+	function backFunction() {
+		$('.coda-nav-left').trigger('click');
 	}
 
 	function btQ1Function() {
@@ -99,7 +97,7 @@ h1 {
 	}
 	
 	function btQ2Function() {
-		var elems = document.getElementsByClassName('q2select');
+/*		var elems = document.getElementsByClassName('q2select');
 		var count = 0;
 		
 		// If user didn't select all values
@@ -118,17 +116,7 @@ h1 {
 		    	noExists = 0;
 		    }
 		}
-		/*
-		for ( var i = 0; i < 8; i++ ) {
-		    if (document.getElementById('q2-1').value != "yes") {
-				alert("disable");
-		        $("#q3-"+i).prop('disabled', 'disabled');
-		    }
-		    else {
-		    	$("#q3-"+i).removeAttr("disabled");
-		    }
-		}
-		*/
+		
 
 		for ( var i = 0; i < 7; i++ ) {
 			var index = i + 1;
@@ -145,7 +133,7 @@ h1 {
 		}
 		
 		alert("please select all values");
-		
+	*/	
 		$('.coda-nav-right').trigger('click');			
 	}
 	
@@ -153,25 +141,25 @@ h1 {
 		//??
 		var elems = document.getElementsByClassName('q3select');
 		var count = 0;
-		for ( var i = 0; i < 7; i++ ) {
+		for ( var i = 0; i < 6; i++ ) {
 		    if(elems[i].value == "-") {
-		    	//alert("please select all values");
-		    	//return;
+		    	alert("please select all values");
+		    	return;
 		    }
 		}
 
 		// If user select all Nos, then no opt-out
 		elems = document.getElementsByClassName('q3select');
 		var allnos = 1;
-		for ( var i = 0; i < 7; i++ ) {
+		for ( var i = 0; i < 6; i++ ) {
 		    if(elems[i].value == "yes") {
-		    	alert("yes");
+		    	//alert("yes");
 		    	allnos = 0;
 		    }
 		}
 		
 		if(allnos == 1) {
-			alert("tab5");
+			//alert("tab5");
 			$('.tab5').trigger('click');		
 			return;
 		}
@@ -182,30 +170,52 @@ h1 {
 	function btQ4Function() {
 		var telephoneCheckbox = document.getElementById('q4telephonecheck');
 		var telephoneText = document.getElementById('q4telephonetext').value; 
-	    
+		var emailCheckbox = document.getElementById('q4emailcheck');
+		var emailText = document.getElementById('q4emailtext').value;
+		var mailinCheckbox = document.getElementById('q4mailincheck');
+		
+		
+		var count = 0;
+		if(telephoneCheckbox.checked) {
+			count = count + 1;
+		}
+		
+		if(emailCheckbox.checked) {
+			count = count + 1;
+		}
+		if(mailinCheckbox.checked) {
+			count = count + 1;
+		}
+		
+		if(count != 1) {
+			alert("please select one and only one choice to limit their sharing");
+			return;
+		}
 		if(telephoneCheckbox.checked && !telephoneText.match(/\S/)) {
 			 alert ('Empty value of telephone is not allowed');
 		     return;
 		}
-		
-		var emailCheckbox = document.getElementById('q4emailcheck');
-		var emailText = document.getElementById('q4emailtext').value; 
-	    
 		if(emailCheckbox.checked && !emailText.match(/\S/)) {
 			 alert ('Empty value of email is not allowed');
 		     return;
 		}
 		
-		var mailinCheckbox = document.getElementById('q4mailincheck');
+		
+		var daystext = document.getElementById('q4days').value;
+		if(!daystext.match(/\S/)) {
+			 alert ('Empty value of question 4.2 is not allowed');
+		     return;
+		}
 	
-		 
+		
+		/* 
 		if(mailinCheckbox.checked ) {
 			$("#q6check").prop('disabled', 'disabled');
 			$("#q6-2-1check").prop('disabled', 'disabled');
 			$("#q6-2-2check").prop('disabled', 'disabled');
 
 		}
-		
+		*/
 		var noteText = document.getElementById('q4notetext').value; 
 	    if(!noteText.match(/\S/)) {
 			 alert ('Empty value of note is not allowed');
@@ -239,7 +249,7 @@ h1 {
 			 alert ('Empty value of email is not allowed');
 		     return;
 		}
-		
+	/*	
 		var elems = document.getElementsByClassName('q3select');
 		var allnos = 1;
 		for ( var i = 0; i < 8; i++ ) {
@@ -256,6 +266,7 @@ h1 {
 			$("#q6-2-2check").prop('disabled', 'disabled');
 
 		}
+
 		
 		if(allnos == 1 || !mailinCheckbox.checked) {
 			alert("tab7");
@@ -264,6 +275,7 @@ h1 {
 			$('.tab7').trigger('click');		
 			return;
 		}
+		*/
 
 		$('.coda-nav-right').trigger('click');			
 	}
@@ -733,7 +745,11 @@ h1 {
 			<br> -->
 			<br>
 			<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
+			<button type="button" class="btn btn-primary"
 				onclick="btQ2Function()">Next</button>
+				
+
 
 			<br> <br>
 
@@ -831,7 +847,8 @@ h1 {
 		
 			<br>
 
-
+<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
 			<button type="button" class="btn btn-primary"
 				onclick="btQ3Function()">Next</button>
 
@@ -887,7 +904,10 @@ h1 {
 
 			<br>
 			<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
+			<button type="button" class="btn btn-primary"
 				onclick="btQ4Function()">Next</button>
+			
 
 			<br> <br>
 
@@ -918,6 +938,8 @@ h1 {
 
 		
 			<br> <br>
+			<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
 			<button type="button" class="btn btn-primary"
 				onclick="btQ5Function()">Next</button>
 
@@ -956,6 +978,8 @@ h1 {
 			Barcode <br> <input type="checkbox" name="q6_3" value ="Tagline" id="q6-2-2check"
 				> Tagline <br>
 				<br>
+				<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
 			<button type="button" class="btn btn-primary"
 				onclick="btQ6Function()">Next</button>
 
@@ -983,6 +1007,8 @@ h1 {
 
 
 			<br>	
+			<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
 			<button type="button" class="btn btn-primary"
 				onclick="btQ7Function()">Next</button>
 
@@ -1146,6 +1172,8 @@ h1 {
 			<input type="radio" name="q8_5" id="q8-5check">Customer's choices will apply to everyone on his account.<br>
 			<input type="radio" name="q8_5" id="q8-5check">Customer's choices will apply to everyone on his account-unless he tell you otherwise.<br>
 			<br>
+			<button type="button" class="btn btn-primary"
+				onclick="backFunction()">Back</button>
 			<button type="button" class="btn btn-primary"
 				onclick="btQ8Function()">Next</button>
 
