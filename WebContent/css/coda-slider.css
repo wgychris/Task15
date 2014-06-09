@@ -248,7 +248,7 @@ css-tricks.com/musings-on-preprocessing/
     * slider styles 
     *
     *************************************************/
-	float: left;
+	margin:0 auto;
 	overflow: hidden;
 	position: relative;
 }
