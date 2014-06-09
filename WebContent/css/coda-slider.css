@@ -40,7 +40,9 @@ css-tricks.com/musings-on-preprocessing/
     * match this with the width of the panel as well. 
     *
     *******************************************************/
-	width: 700px;
+	width: 800px;
+	overflow:auto;
+	height:700px;
 }
 
 .coda-slider-wrapper .coda-slider .panel {
@@ -51,7 +53,9 @@ css-tricks.com/musings-on-preprocessing/
       * of the container as well. 
       *
       *******************************************************/
-	width: 700px;
+	width: 800px;
+	overflow:auto;
+	height:700px;
 }
 
 .coda-slider-wrapper .coda-slider .panel .panel-wrapper {
