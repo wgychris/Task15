@@ -352,7 +352,7 @@ css-tricks.com/musings-on-preprocessing/
       * Html arrow styles 
       *
       *************************************************/
-	display: block;
+	display: none;
 	text-align: center;
 	text-decoration: none;
 }

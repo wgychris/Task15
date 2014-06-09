@@ -193,7 +193,7 @@ if ( typeof Object.create !== 'function' ) {
 			
 			$($(self.sliderId).parent()).find('[class^=coda-nav-]').on('click', function(e){
 				// These prevent clicking when in continuous mode, which would break it otherwise.
-				alert("1");
+				//alert("1");
 				if (!self.clickable && self.options.continuous) {return false;}
 				self.setCurrent($(this).attr('class').split('-')[2]);
 				if (self.options.continuous) {self.clickable = false;}
@@ -201,7 +201,7 @@ if ( typeof Object.create !== 'function' ) {
 			});
 			// Click tabs
 			$($(self.sliderId).parent()).find('[class^=coda-nav] li').on('click', function(e){
-				alert("2");
+				//alert("2");
 				if (!self.clickable && self.options.continuous) {return false;}
 				self.setCurrent(parseInt( $(this).attr('class').split('tab')[1], 10) - 1 );
 				alert($(this).attr('class'));
@@ -210,7 +210,7 @@ if ( typeof Object.create !== 'function' ) {
 			});
 			// Click cross links
 			$('[data-ref*=' + (self.sliderId).split('#')[1] + ']').on('click', function(e){
-				alert("3");
+				//alert("3");
 				if (!self.clickable && self.options.continuous) {return false;}
 				// Stop and Play controls
 				if (self.options.autoSlideControls) {
