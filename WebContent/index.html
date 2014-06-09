@@ -124,8 +124,8 @@ h1 {
 		}
 		
 		// Check 2.4 enable 4.4 when 3.4-1 and 3.4-4 yes
-		var q34Element = "#q3-4";
-		$(q34Element).prop('disabled', 'disabled');
+		var q33Element = "#q3-3";
+		$(q33Element).prop('disabled', 'disabled');
 		
 		var q241radiobox = $('input[name=q9-1-1check]:checked').val();
 		if(q241radiobox != "yes" && q241radiobox != "no" ) {
@@ -145,14 +145,14 @@ h1 {
 			if(q244radiobox == "yes") {
 				//Enable 3.3
 				//alert("enable");
-				 $(q34Element).removeAttr("disabled");
+				 $(q33Element).removeAttr("disabled");
 				  
 			}
 		}
 		
 		// Check 2.5 enable 3.5 if yes
-		var q35Element = "#q3-5";
-		$(q35Element).prop('disabled', 'disabled');
+		var q34Element = "#q3-4";
+		$(q34Element).prop('disabled', 'disabled');
 		
 		var q25radoibox = $('input[name=q2_5_1]:checked').val();
 		if( q25radoibox != "yes" && q25radoibox != "no" ) {
@@ -659,7 +659,7 @@ h1 {
 				download a html file containing the policy.</p>
 			<p>1.1 What is your company name?</p>
 			<input type="text" id="q1-1" name="q1_1"><br> <br>
-			<p>1.2 What typess of personal information do you want to collect
+			<p>1.2 What types of personal information do you want to collect
 				and share depend on the product or service clients have with
 				you(include at least five):</p>
 
@@ -751,7 +751,7 @@ h1 {
 				</select>
 			
 			<br> -->
-			
+			<br>
 			<p>2.4 Do you have affiliates?</p>
 
 			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q911yesnoCheck();" name="q9-1-1check" id="q9-1-1yesCheck" value="yes">Yes<br>
@@ -779,7 +779,7 @@ h1 {
 			</div>
 			
 			<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;Do you share customer's information with your affiliates?<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;Do you share customer's personal information with your affiliates?<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q912yesnoCheck();" name="q9-1-2check" id="q9-1-2yesCheck" value="yes">Yes<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q912yesnoCheck();" name="q9-1-2check" id="q9-1-2noCheck" value="no">No<br>
 			
@@ -825,7 +825,7 @@ h1 {
 		
 			<br> -->
 			<br>
-			<p>2.5 Do you share information with any nonaffiliatess third parties?</p>
+			<p>2.5 Do you share information with any nonaffiliates third parties?</p>
 
 			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q92yesnoCheck();"class="q92check1" name="q2_5_1" id="q92yesCheck" value="yes">Yes<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q92yesnoCheck();"class="q92check1" name="q2_5_1" id="q92yesCheck" value="no">No<br> 
@@ -887,58 +887,53 @@ h1 {
 				Once you are finished, just press submit and the privacy policy will
 				be generated for you to review. You will also have the option to
 				download a html file containing the policy.</p>
-			<p>3.1 For our everyday business purposes — such as to process
-				your transactions, maintain your account(s), respond to court orders
-				and legal investigations, or report to credit bureaus ?</p>
+			<p>3.1 Can customers limit the sharing of your everyday business purposes? </p>
 
 		
-				Can customers limit this sharing? <select class="q3select" id="q3-1" name = "q3_1">
+				&nbsp;&nbsp;&nbsp;&nbsp;<select class="q3select" id="q3-1" name = "q3_1">
 					<option value="-">--</option>
 					<option value="yes">Yes</option>
 					<option value="no">No</option>
 				</select>
 					<br>
-			<p>3.2 For our marketing purposes — with service providers we use
-				to offer our products and services to you (please see below to limit
-				the ways we contact you)</p>
+					<br>
+			<p>3.2 Can customers limit the sharing of your marketing purposes?</p>
 
 		
-				Can customers limit this sharing? <select class="q3select" id="q3-2"name = "q3_2">
+			&nbsp;&nbsp;&nbsp;&nbsp; <select class="q3select" id="q3-2"name = "q3_2">
 					<option value="-">--</option>
 					<option value="yes">Yes</option>
 					<option value="no">No</option>
 				</select>
 	
 			<br>
-
-			<p>3.3 Do you share your customers' personal information for
-				joint marketing with other financial companies</p>
+			<br>
+			<p>3.3 Can customers limit the sharing of of your joint marketing with other financial companies?</p>
 
 	
-				Can customers limit this sharing? <select class="q3select" id="q3-3"name = "q3_3">
+				&nbsp;&nbsp;&nbsp;&nbsp;<select class="q3select" id="q3-3"name = "q3_3">
 					<option value="-">--</option>
 					<option value="yes">Yes</option>
 					<option value="no">No</option>
 				</select>
 
 			<br>
-
-			<p>3.4 For joint marketing with other financial companies</p>
+			<br>
+			<p>3.4 Can customers limit the sharing of your affiliates’ everyday business purposes?</p>
 
 		
-				Can customers limit this sharing? <select class="q3select" id="q3-4"name = "q3_4">
+				&nbsp;&nbsp;&nbsp;&nbsp;<select class="q3select" id="q3-4"name = "q3_4">
 					<option value="-">--</option>
 					<option value="yes">Yes</option>
 					<option value="no">No</option>
 				</select>
 
 			<br>
-
-			<p>3.5 For our affiliates’ everyday business purposes —
-				Information about your transactions and experiences</p>
+			<br>
+			<p>3.5 Can customers limit the sharing of nonaffiliates' marketing?</p>
 
 	
-				Can customers limit this sharing? <select class="q3select" id="q3-5"name = "q3_5">
+				&nbsp;&nbsp;&nbsp;&nbsp; <select class="q3select" id="q3-5"name = "q3_5">
 					<option value="-">--</option>
 					<option value="yes">Yes</option>
 					<option value="no">No</option>
@@ -946,12 +941,11 @@ h1 {
 
 			<br>
 
+			<br>
+			<p>3.6 Can customers limit the sharing of your affiliates' marketing?</p>
 
-			<p>3.6 For nonaffiliates to market to you — for all credit card
-				accounts?</p>
 
-
-				Can customers limit this sharing? <select class="q3select" id="q3-6" name = "q3_6">
+				&nbsp;&nbsp;&nbsp;&nbsp;<select class="q3select" id="q3-6" name = "q3_6">
 					<option value="-">--</option>
 					<option value="yes">Yes</option>
 					<option value="no">No</option>
@@ -1051,12 +1045,12 @@ h1 {
 			
 				<input type="checkbox" name="q5telephonecheck" id="q5telephonecheck" value="" >
 				Telephone
-				<p style="font-family: arial; font-size: 10px;">Please enter the
+				<p style="font-family: arial; font-size: 13px;">Please enter the
 					number you want to provide:</p>
 				<input type="text" name="q5telephonetext" id="q5telephonetext" name = "q5_1" value="" ><br>
 				<input type="checkbox" name="q5websitecheck" id="q5websitecheck"
 					value=""> Website
-				<p style="font-family: arial; font-size: 10px;">Please enter the
+				<p style="font-family: arial; font-size: 13px;">Please enter the
 					nrl of website you want to provide:</p>
 				<input type="text" name="q5websitetext" id="q5websitetext" name = "q5_2" value=""><br>
 
@@ -1085,7 +1079,7 @@ h1 {
 				<option value="-">--</option>
 				<option value="yes">Yes</option>
 				<option value="no">No</option>
-			</select> <br> <br>
+			</select> <br>
 			<br>
 			<p>6.2 Please provide your opt-out mail-in address:</p>
 			Address Line1: <input type="text" id="q5websitetext" name = "q6_2_1"><br>
@@ -1376,7 +1370,7 @@ h1 {
 				be generated for you to review. You will also have the option to
 				download a html file containing the policy.</p>
 				
-				<p>9.1 So you want to provide information on International privacy law?</p>
+				<p>9.1 Do you want to provide information on International privacy law?</p>
 				<input type="radio" name ="q10-1-check" class="q10check1">Yes<br>
 				<input type="radio" name ="q10-1-check" class="q10check1">No<br> 
 				
