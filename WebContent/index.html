@@ -97,6 +97,75 @@ h1 {
 	}
 	
 	function btQ2Function() {
+		//Check 2.3 if yes yes => enable 3.3
+		
+		var q33Element = "#q3-3";
+		$(q33Element).prop('disabled', 'disabled');
+		
+		var q231radiobox = $('input[name=q2-3-1]:checked').val();
+		if(q231radiobox != "yes" && q231radiobox != "no" ) {
+			 alert ('Please enter information in 2.3');
+			 //alert(q831radiobox);
+		     return;
+		}
+		if(q231radiobox == "yes") {
+			var q232radiobox = $('input[name=q2_3_2]:checked').val();
+			if(q232radiobox != "yes" && q232radiobox != "no" ) {
+				alert ('Please enter information in 2.3-2');
+				return;
+			}
+			
+			if(q232radiobox == "yes") {
+				//Enable 3.3
+				//alert("enable");
+				 $(q33Element).removeAttr("disabled");
+				  
+			}
+		}
+		
+		// Check 2.4 enable 4.4 when 3.4-1 and 3.4-4 yes
+		var q34Element = "#q3-4";
+		$(q34Element).prop('disabled', 'disabled');
+		
+		var q241radiobox = $('input[name=q9-1-1check]:checked').val();
+		if(q241radiobox != "yes" && q241radiobox != "no" ) {
+			 alert ('Please enter information in 2.4');
+			 //alert(q831radiobox);
+		     return;
+		}
+		
+		
+		if(q241radiobox == "yes") {
+			var q244radiobox = $('input[name=q9-1-2check]:checked').val();
+			if(q244radiobox != "yes" && q244radiobox != "no" ) {
+				alert ('Please enter information in 2.3-4');
+				return;
+			}
+			
+			if(q244radiobox == "yes") {
+				//Enable 3.3
+				//alert("enable");
+				 $(q34Element).removeAttr("disabled");
+				  
+			}
+		}
+		
+		// Check 2.5 enable 3.5 if yes
+		var q35Element = "#q3-5";
+		$(q35Element).prop('disabled', 'disabled');
+		
+		var q25radoibox = $('input[name=q2_5_1]:checked').val();
+		if( q25radoibox != "yes" && q25radoibox != "no" ) {
+			alert ('Please enter information in 2.5');
+			return;
+		}
+		
+		if(q25radoibox == "yes") {
+				$(q35Element).removeAttr("disabled");
+				  
+			}
+		
+	
 /*		var elems = document.getElementsByClassName('q2select');
 		var count = 0;
 		
@@ -249,33 +318,33 @@ h1 {
 			 alert ('Empty value of email is not allowed');
 		     return;
 		}
-	/*	
+		
 		var elems = document.getElementsByClassName('q3select');
 		var allnos = 1;
-		for ( var i = 0; i < 8; i++ ) {
+		for ( var i = 0; i < 6; i++ ) {
 		    if(elems[i].value == "yes") {
 		    	alert("yes");
 		    	allnos = 0;
 		    }
 		}
 		
-		var mailinCheckbox = document.getElementById('q4mailincheck');
+/*		var mailinCheckbox = document.getElementById('q4mailincheck');
 		if(!mailinCheckbox.checked ) {
 			$("#q6check").prop('disabled', 'disabled');
 			$("#q6-2-1check").prop('disabled', 'disabled');
 			$("#q6-2-2check").prop('disabled', 'disabled');
 
 		}
-
+*/
 		
-		if(allnos == 1 || !mailinCheckbox.checked) {
+		if(allnos == 1) {
 			alert("tab7");
 			//alert(allnos);
 			//alert(mailinCheckbox.checked);
 			$('.tab7').trigger('click');		
 			return;
 		}
-		*/
+		
 
 		$('.coda-nav-right').trigger('click');			
 	}
@@ -288,31 +357,86 @@ h1 {
 	
 	
 	function btQ7Function() {
-		var q71checkbox = document.getElementById('q7-1check');
-		var q72checkbox = document.getElementById('q7-2check');
+		var q71radiobox = $('input[name=q7-1check]:checked').val();
 		
-		if(!q71checkbox.checked && !q72checkbox.checked) {
-			 alert ('Must choose only one notice provider');
-		     return;
-		}
-		
-		if(q71checkbox.checked && q72checkbox.checked) {
+		if(q71radiobox != "only" && q71radiobox != "two" ) {
 			 alert ('Must choose only one notice provider');
 		     return;
 		}
 		
 		var q72Text = document.getElementById('q7-2text').value; 
-	    
-		if(q72checkbox.checked && !q72Text.match(/\S/)) {
+		if( q71radiobox == "two" && !q72Text.match(/\S/)) {
 			 alert ('Please enter insitutions other than you');
 		     return;
 		}
 		
+		
 		$('.coda-nav-right').trigger('click');			
 	}
 	
+	
 	function btQ8Function() {
-		var q81checkbox = document.getElementById('q8-1check');
+		
+		// Check 8-1
+		var q81radiobox = $('input[name=q8-1]:checked').val();
+		if(q81radiobox != "yes" && q81radiobox != "no" ) {
+			 alert ('Please enter additional information pertaining to security methods');
+		     return;
+		}
+		var q81Text = document.getElementById('q8-1text').value; 
+	   	if(q81radiobox == "yes" && !q81Text.match(/\S/)) {
+			 alert ('Please enter additional information in text field');
+		     return;
+		}
+		
+	   	//Check 8-2
+		var count = 0;
+		var elems = document.getElementsByClassName('q8_2check'), i;
+		for (i in elems) {
+		        if(elems[i].checked) {
+		            count = count + 1;
+		        }
+		}
+		if(count != 6) {
+			alert(count);
+			alert ('Please choose 5 and only 5 terms in 8.2');
+		    return;
+		}
+		
+		//Check 8-3
+		var q831radiobox = $('input[id=q8-3yesCheck]:checked').val();
+		if(q831radiobox != "yes" && q831radiobox != "no" ) {
+			 alert ('Please enter information in 8.3');
+			 alert(q831radiobox);
+		     return;
+		}
+		if(q831radiobox == "yes") {
+			var q832radiobox = $('input[name=q8_3_1]:checked').val();
+			if(q832radiobox != "yes" && q832radiobox != "no" ) {
+				alert ('Please enter information in 8.3-2');
+				return;
+			}
+		}
+		
+		
+		//Check 8-4
+		var q83check = document.getElementById('q8-3check');
+		var q83Text = document.getElementById('q8-3text').value; 
+	    
+		if(!q83check.checked && !q83Text.match(/\S/) )  {
+			 alert ('Please enter information in 8.4');
+		     return;
+		}
+		
+		//Check 8-5
+		var q85radiobox = $('input[name=q8_5]:checked').val();
+		if(q85radiobox != "yes" && q85radiobox != "no" ) {
+			 alert ('Please enter information in 8.5');
+		     return;
+		}
+		
+		
+		/* var q81checkbox = document.getElementById('q8-1check');
 		var q81Text = document.getElementById('q8-1text').value; 
 	    
 		if(q81checkbox.checked && !q81Text.match(/\S/)) {
@@ -339,7 +463,7 @@ h1 {
 		if(q83checkbox.checked && !q83Text.match(/\S/)) {
 			 alert ('Please enter state privacy law provisions');
 		     return;
-		}
+		} */
 		$('.coda-nav-right').trigger('click');			
 	}
 	
@@ -604,16 +728,16 @@ h1 {
 			
 			<p>2.3 Do you engage in joint marketing?</p>
 
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2-3-1" id="q9-3yesCheck">Yes<br> 
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2-3-1" id="q9-3noCheck">No<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2-3-1" id="q9-3yesCheck" value ="yes">Yes<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2-3-1" id="q9-3noCheck" value="no">No<br> 
 			<br>
 			<div id="q9-3ifYes" style="display:none">
 			&nbsp;&nbsp;&nbsp;&nbsp;List categories of your joint marketing partners:<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;<textarea rows="4" cols="50" id="q9-3text" name = "q2_3_1"></textarea><br>
 			<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;Do you share your customer's personal information for joint marketing with other financial companies?<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2_3_2" id="q2-3yesCheck">Yes<br> 
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2_3_2" id="q2-3noCheck">No<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2_3_2" id="q2-3yesCheck" value="yes">Yes<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q93yesnoCheck();"class="q93check" name = "q2_3_2" id="q2-3noCheck" value= "no">No<br> 
 			</div>
 
 			<!-- <p>2.3 Do you share your customers' personal information for
@@ -630,14 +754,14 @@ h1 {
 			
 			<p>2.4 Do you have affiliates?</p>
 
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q911yesnoCheck();" name="q9-1-1check" id="q9-1-1yesCheck">Yes<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q911yesnoCheck();" name="q9-1-1check" id="q9-1-1noCheck">No<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q911yesnoCheck();" name="q9-1-1check" id="q9-1-1yesCheck" value="yes">Yes<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q911yesnoCheck();" name="q9-1-1check" id="q9-1-1noCheck" value="no">No<br>
 			<br>
 		<div id="q9-1-1ifYes" style="display:none">
 			
 			&nbsp;&nbsp;&nbsp;&nbsp;Does your affiliates include financial companies?<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q913yesnoCheck();" name="q9-3check" id="q9-1-3yesCheck">Yes<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q913yesnoCheck();" name="q9-3check" id="q9-1-3noCheck">No<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q913yesnoCheck();" name="q9-3check" id="q9-1-3yesCheck" value="yes">Yes<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q913yesnoCheck();" name="q9-3check" id="q9-1-3noCheck" value="no">No<br>
 			<div id="q9-1-3ifYes" style="display:none">
 			
 			<br>
@@ -646,8 +770,8 @@ h1 {
 			</div>
 			<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;Does your affiliates include nonfinancial companies?<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q914yesnoCheck();" name="q9-4check" id="q9-1-4yesCheck">Yes<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q914yesnoCheck();" name="q9-4check" id="q9-1-4noCheck">No<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q914yesnoCheck();" name="q9-4check" id="q9-1-4yesCheck" value="yes">Yes<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q914yesnoCheck();" name="q9-4check" id="q9-1-4noCheck" value="no">No<br>
 			<div id="q9-1-4ifYes" style="display:none">
 			<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;Please type in the names of nonfinancial companies:<br>
@@ -656,8 +780,8 @@ h1 {
 			
 			<br>
 			&nbsp;&nbsp;&nbsp;&nbsp;Do you share customer's information with your affiliates?<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q912yesnoCheck();" name="q9-1-2check" id="q9-1-2yesCheck">Yes<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q912yesnoCheck();" name="q9-1-2check" id="q9-1-2noCheck">No<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q912yesnoCheck();" name="q9-1-2check" id="q9-1-2yesCheck" value="yes">Yes<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q912yesnoCheck();" name="q9-1-2check" id="q9-1-2noCheck" value="no">No<br>
 			
 			<div id="q9-1-2ifYes" style="display:none">
 			<br>
@@ -703,8 +827,8 @@ h1 {
 			<br>
 			<p>2.5 Do you share information with any nonaffiliatess third parties?</p>
 
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q92yesnoCheck();"class="q92check1" name="q2_5_1" id="q92yesCheck">Yes<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q92yesnoCheck();"class="q92check1" name="q2_5_1" id="q92yesCheck">No<br> 
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q92yesnoCheck();"class="q92check1" name="q2_5_1" id="q92yesCheck" value="yes">Yes<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" onclick="javascript:q92yesnoCheck();"class="q92check1" name="q2_5_1" id="q92yesCheck" value="no">No<br> 
 			<br>
 			<div id="q92ifYes" style="display:none">
 			&nbsp;&nbsp;&nbsp;&nbsp;Plase select categories of nonaffiliated thirdparities<br> 
@@ -994,8 +1118,8 @@ h1 {
 				be generated for you to review. You will also have the option to
 				download a html file containing the policy.</p>
 			<p>7.1 Who is providing this notice?</p>
-			<input type="radio" onclick="javascript:q71yesnoCheck();" name="q7-1check" id="q71-oneCheck"> Only your institution<br> 
-			<input type="radio" onclick="javascript:q71yesnoCheck();" name="q7-1check" id="q71-twoCheck"> Two or more institutions<br> 
+			<input type="radio" onclick="javascript:q71yesnoCheck();" name="q7-1check" id="q71-oneCheck" value="only"> Only your institution<br> 
+			<input type="radio" onclick="javascript:q71yesnoCheck();" name="q7-1check" id="q71-twoCheck" value = "two"> Two or more institutions<br> 
 			<div  id="q71-ifTwo" style="display:none">
 			<br>
 			
@@ -1026,8 +1150,8 @@ h1 {
 				download a html file containing the policy.</p>
 			<p>8.1 Do you have additional information pertaining to security methods?</p>
 			(E.g. Use of cookies)<br>
-			<input type="radio" onclick="javascript:q81yesnoCheck();" name="q8-1" id="q81yesCheck">Yes<br>
-			<input type="radio" onclick="javascript:q81yesnoCheck();" name="q8-1" id="q81noCheck">No<br>
+			<input type="radio" onclick="javascript:q81yesnoCheck();" name="q8-1" id="q81yesCheck" value = "yes">Yes<br>
+			<input type="radio" onclick="javascript:q81yesnoCheck();" name="q8-1" id="q81noCheck" value = "no">No<br>
 			
 			<div id="q81ifYes" style="display:none">
 			<br>
@@ -1040,111 +1164,111 @@ h1 {
 			<br>
 				<table>
 					<tr>
-						<td><input type="checkbox" name="q8_2" value="open an account">open an account</td>
-						<td><input type="checkbox" name="q8_2" value="deposit money">deposit money</td>
-						<td><input type="checkbox" name="q8_2" value="pay your bills">pay customer's bills</td>
+						<td><input type="checkbox" class = "q8_2check" name="q8_2" value="open an account">open an account</td>
+						<td><input type="checkbox" class = "q8_2check"  name="q8_2" value="deposit money">deposit money</td>
+						<td><input type="checkbox" class = "q8_2check"  name="q8_2" value="pay your bills">pay customer's bills</td>
 						
 					</tr>
 					
 					<tr>
-					<td><input type="checkbox" name="q8_2" value="apply for a loan">apply for a loan</td>
-						<td><input type="checkbox" name="q8_2" value="use your credit or debit card">
+					<td><input type="checkbox"  class = "q8_2check" name="q8_2" value="apply for a loan">apply for a loan</td>
+						<td><input type="checkbox"  class = "q8_2check" name="q8_2" value="use your credit or debit card">
 									use customer's credit or debit card</td>
-						<td><input type="checkbox" name="q8_2" value="seek financial or tax advice">
+						<td><input type="checkbox"  class = "q8_2check" name="q8_2" value="seek financial or tax advice">
 									seek financial or tax advice</td>
 						
 					</tr>
 					
 					<tr>
-					<td><input type="checkbox" name="q8_2" value="apply for insurance">
+					<td><input type="checkbox"  class = "q8_2check" name="q8_2" value="apply for insurance">
 									apply for insurance</td>
-						<td><input type="checkbox" name="q8_2" value="pay insurance premiums">
+						<td><input type="checkbox" class = "q8_2check"  name="q8_2" value="pay insurance premiums">
 									pay insurance premiums</td>
-						<td><input type="checkbox" name="q8_2" value="file an insurance claim">
+						<td><input type="checkbox"  class = "q8_2check" name="q8_2" value="file an insurance claim">
 									file an insurance claim</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="seek advice about your investments">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="seek advice about your investments">
 									seek advice about customer's investments</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="buy securities from us">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="buy securities from us">
 									buy securities from you</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="sell securities to us">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="sell securities to us">
 									sell securities to you</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="direct us to buy securities">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="direct us to buy securities">
 									direct you to buy securities</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="direct us to sell your securities">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="direct us to sell your securities">
 									direct you to sell your securities</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="make deposits or withdrawls from your account">
+						<td valign="top"><input type="checkbox" class = "q8_2check"  name="q8_2" value="make deposits or withdrawls from your account">
 									make deposits or withdrawls from customer's account</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="enter into an investment advisory contract">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="enter into an investment advisory contract">
 									enter into an investment advisory contract</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="give us your income information">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="give us your income information">
 									give you customer's income information</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="provide employment information">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="provide employment information">
 									provide employment information</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="give us your employment history">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="give us your employment history">
 									give you customer's employment history</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="tell us about your investment or retirement protfolio">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="tell us about your investment or retirement protfolio">
 									tell you about customer's investment or retirement protfolio</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="tell us about your investment or retirement earnings">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="tell us about your investment or retirement earnings">
 									tell you about customer's investment or retirement earnings</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="apply for financing">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="apply for financing">
 									apply for financing</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="apply for a lease">apply for a lease</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="provide account information">
+						<td valign="top"><input type="checkbox" class = "q8_2check"  name="q8_2" value="apply for a lease">apply for a lease</td>
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="provide account information">
 									provide account information</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="give us your contact information">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="give us your contact information">
 									give you customer's contact information</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="pay us by check">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="pay us by check">
 									pay you by check</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="give us your wage statements">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="give us your wage statements">
 									give you customer's wage statements</td>
 						
 				
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="provide your mortage information">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="provide your mortage information">
 									provide customer's mortage information</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="make a wire transfer">
+						<td valign="top"><input type="checkbox" class = "q8_2check"  name="q8_2" value="make a wire transfer">
 									make a wire transfer</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="tell us who receives the money">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="tell us who receives the money">
 									tell you who receives the money</td>
 						
 					</tr>
 					
 					<tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="tell us where to send the money">
+					<td valign="top"><input type="checkbox" class = "q8_2check"  name="q8_2" value="tell us where to send the money">
 									tell you where to send the money</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="show your government-issued ID">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="show your government-issued ID">
 									show customer's government-issued ID</td>
-						<td valign="top"><input type="checkbox" name="q8_2" value="show your driver's license">
+						<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="show your driver's license">
 									show customer's driver's license</td>
 					
 					</tr>
-					<td valign="top"><input type="checkbox" name="q8_2" value="order a commodity futures or option trade">
+					<td valign="top"><input type="checkbox"  class = "q8_2check" name="q8_2" value="order a commodity futures or option trade">
 									order a commodity futures or option trade</td>
 					<tr>
 					
@@ -1153,24 +1277,24 @@ h1 {
 				</table>			
 			<br>						
 			<p>8.3 Do you collect customer's personal information from others?</p>
-			<input type="radio" onclick="javascript:q83yesnoCheck();" name="q8_3" id="q8-3yesCheck" value = "Yes">Yes<br>
-			<input type="radio" onclick="javascript:q83yesnoCheck();" name="q8_3" id="q8-3yesCheck" value = "No">No<br>
+			<input type="radio" onclick="javascript:q83yesnoCheck();" name="q8_3" id="q8-3yesCheck" value = "yes">Yes<br>
+			<input type="radio" onclick="javascript:q83yesnoCheck();" name="q8_3" id="q8-3yesCheck" value = "no">No<br>
 			<div id="q8-3ifYes" style="display:none">
 			<br>
 			Do you collect customer's personal information from credit bureas and affiliates?<br>
-			<input type="radio" name="q8_3_1" id="q8-3-1Check" value = "Yes">Yes<br>
-			<input type="radio" name="q8_3_1" id="q8-3-1Check" value = "Yes">No<br>
+			<input type="radio" name="q8_3_1" id="q8-3-1Check" value = "yes">Yes<br>
+			<input type="radio" name="q8_3_1" id="q8-3-1Check" value = "no">No<br>
 			</div>
 								
 			<br>
 			<p>8.4 Do you want to describe state privacy law to explain why customer can't limiting all sharing?</p>
-			<input type="checkbox" name="q8-3check" id="q8-3check">
+			<input type="checkbox" name="q8-3check" id="q8-3check" value="yes">
 			Yes<br>
 			<textarea rows="4" cols="50" name="q8_4" id="q8-3text"></textarea>
 			<br>
 			<p>8.5 What happens when customer limis hsaring for an account he hould jointly with someone else?</p>
-			<input type="radio" name="q8_5" id="q8-5check">Customer's choices will apply to everyone on his account.<br>
-			<input type="radio" name="q8_5" id="q8-5check">Customer's choices will apply to everyone on his account-unless he tell you otherwise.<br>
+			<input type="radio" name="q8_5" id="q8-5check" value = "yes">Customer's choices will apply to everyone on his account.<br>
+			<input type="radio" name="q8_5" id="q8-5check" value = "no">Customer's choices will apply to everyone on his account-unless he tell you otherwise.<br>
 			<br>
 			<button type="button" class="btn btn-primary"
 				onclick="backFunction()">Back</button>
